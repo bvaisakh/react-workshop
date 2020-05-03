@@ -17,12 +17,12 @@ const a = 5;
 
 // The let Keyword
 
-var b = 5;
-// let b = 5;
+// var b = 5;
+let b = 5;
 
 if (true) {
-  var b = 10;
-  // let b = 10;
+  // var b = 10;
+  let b = 10;
 
   console.log(b);
 }
@@ -33,9 +33,8 @@ console.log(b);
 var div,
   container = document.getElementById("container");
 
-for (var i = 0; i < 5; i++) {
-  // for (let i = 0; i < 5; i++) {
-  
+// for (var i = 0; i < 5; i++) {  
+for (let i = 0; i < 5; i++) {  
   div = document.createElement("div");
   div.onclick = function () {
     alert("This is box #" + i);
@@ -100,16 +99,17 @@ console.log(customGreet("Hey", "Vaisakh"));
 
 // triveni.display(); // Uncaught TypeError: Cannot read property 'join' of undefined
 
-const triveni = {
-  rivers: ["Ganga", "Yamuna", "Saraswati"],
-  display: function (delay = 1000) {
-    setTimeout(() => {
-      console.log(this.rivers.join(", "));
-    }, delay);
-  },
-};
+// const triveni = {
+//   rivers: ["Ganga", "Yamuna", "Saraswati"],
+//   display: function (delay = 1000) {
+//     setTimeout(() => {
+//       // debugger;
+//       console.log(this.rivers.join(", "));
+//     }, delay);
+//   },
+// };
 
-triveni.display();
+// triveni.display();
 
 // END: Arrow Functions
 
@@ -151,10 +151,10 @@ printHouseName2(myAddress);
 const nicknames = ["Master Blaster", "God of the Off Side", "The Wall"];
 
 const [sachin] = nicknames;
-console.log(sachin);
+console.log(`Sachin's nickname is ${sachin}`);
 
 const [, sourav, ] = nicknames;
-console.log(sourav);
+console.log(`Sourav's nickname is ${sourav}`);
 
 // END: Destructuring Arrays
 
@@ -210,14 +210,15 @@ const north = [
 ];
 
 const southAndNorth = [...south, ...north];
-console.log(southAndNorth.join(", "));
+console.log(`SouthNorth States: ${southAndNorth.join(", ")}`);
 
 const [ourState, ...others] = southAndNorth;
-console.log(others.join(", "));
+console.log(`Our state: ${ourState}`);
+console.log(`Other states: ${others.join(", ")}`);
 
 function southOfKerala(...districts) {
-  const [southest, ...rest] = districts;
-  console.log(`Southest district of Kerala is ${southest}.`);
+  const [southEast, ...rest] = districts;
+  console.log(`Southest district of Kerala is ${southEast}.`);
 }
 southOfKerala("Thiruvananthapuram", "Kollam", "Pathanamthitta");
 
@@ -225,68 +226,70 @@ southOfKerala("Thiruvananthapuram", "Kollam", "Pathanamthitta");
 
 
 
-// XMLHttpRequest
+// // XMLHttpRequest
 
-function onResponse() {
-  var data = JSON.parse(this.responseText);
-  console.log(data);
-}
+// function onResponse() {
+//   var data = JSON.parse(this.responseText);
+//   console.log(`Response from XHR call: ${data}`);
+// }
 
-function onError(error) {
-  console.log('Fetch Error :-S', error);
-}
+// function onError(error) {
+//   console.log(error);
+// }
 
-var xhrRequest = new XMLHttpRequest();
-xhrRequest.onload = onResponse;
-xhrRequest.onerror = onError;
-xhrRequest.open('get', 'https://randomuser.me/api/', true);
-xhrRequest.send();
+// var xhrRequest = new XMLHttpRequest();
+// xhrRequest.onload = onResponse;
+// xhrRequest.onerror = onError;
+// xhrRequest.open('get', 'https://randomuser.me/api/', true);
+// xhrRequest.send();
 
-// END: XMLHttpRequest
-
-
-
-// jQuery Ajax
-
-$.ajax("https://randomuser.me/api/")
-  .then(function (data) {
-    console.log(data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-// END: jQuery Ajax
+// // END: XMLHttpRequest
 
 
 
-// Fetch API
+// // jQuery Ajax
 
-fetch("https://randomuser.me/api/")
-  .then((response) => {
-    if (response.status !== 200) {
-      throw new Error(`Request failed with status - ${response.status}`);
-    }
+// $.ajax("https://randomuser.me/api/")
+//   .then(function (data) {
+//     console.log(`Response from AJAX call: ${data}`);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
 
-    // response is a stream
-    response.json().then((data) => {
-      console.log(data);
-    });
-  })
-  .catch((error) => {
-    console.log(`Fetch Error : ${error}`);
-  });
-
-// END: Fetch API
+// // END: jQuery Ajax
 
 
 
-// Async/Await
+// // Fetch API
 
-async function getRandomUser() {
-  const user = await fetch("https://randomuser.me/api/");
-  console.log(user);
-}
+// fetch("https://randomuser.me/api/")
+//   .then((response) => {
+//     if (response.status !== 200) {
+//       throw new Error(`Request failed with status - ${response.status}`);
+//     }
+
+//     // response is a stream
+//     response.json().then((data) => {
+//       console.log(`Response from Fetch call: ${data}`);
+//     });
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+// // END: Fetch API
+
+
+
+// // Async/Await
+
+// async function getRandomUser() {
+//   const response = await fetch("https://randomuser.me/api/");
+//   const user = await response.json();
+//   console.log(`Response from async fn: ${user}`);
+// }
+// getRandomUser();
 
 // END: Async/Await
 
