@@ -15,29 +15,61 @@ const a = 5;
 
 
 
-// The let Keyword
+// The let Keyword - Block Scope
 
-// var b = 5;
-let b = 5;
+var b1 = 5;
 
 if (true) {
-  // var b = 10;
-  let b = 10;
-
-  console.log(b);
+  var b1 = 10;
+  console.log(b1);
 }
 
-console.log(b);
+console.log(b1);
 
 
+let b2 = 5;
+
+if (true) {
+  let b2 = 10;
+
+  console.log(b2);
+}
+
+console.log(b2);
+
+// END: The let Keyword - Block Scope
+
+
+
+// The let Keyword - Hoisting
+
+console.log(c1);
+var c1 = 5;
+
+
+// console.log(c2);
+// let c2 = 5; // ReferenceError: Cannot access 'c2' before initialization
+
+// END: The let Keyword - Hoisting
+
+
+
+// The let Keyword - A step towards closure
 var div,
   container = document.getElementById("container");
 
-// for (var i = 0; i < 5; i++) {  
-for (let i = 0; i < 5; i++) {  
+for (var i = 0; i < 3; i++) {
   div = document.createElement("div");
-  div.onclick = function () {
+  div.onclick = () => {
     alert("This is box #" + i);
+  };
+  container.appendChild(div);
+}
+
+for (let j = 3; j < 6; j++) {
+  div = document.createElement("div");
+  div.onclick = () => {
+    alert("This is box #" + j);
   };
   container.appendChild(div);
 }
@@ -86,32 +118,35 @@ const customGreet = (greet, entity) => {
 };
 console.log(customGreet("Hey", "Vaisakh"));
 
+// END: Arrow Functions
 
-// const triveni = {
+
+
+// Arrow Functions - A closure
+
+// const triveni1 = {
 //   rivers: ["Ganga", "Yamuna", "Saraswati"],
 //   display: function(delay = 1000) {
 //     setTimeout(function() {
-//       debugger;
 //       console.log(this.rivers.join(", "));
 //     }, delay);
 //   }
 // };
 
-// triveni.display(); // Uncaught TypeError: Cannot read property 'join' of undefined
+// triveni1.display(); // Uncaught TypeError: Cannot read property 'join' of undefined
 
-// const triveni = {
-//   rivers: ["Ganga", "Yamuna", "Saraswati"],
-//   display: function (delay = 1000) {
-//     setTimeout(() => {
-//       // debugger;
-//       console.log(this.rivers.join(", "));
-//     }, delay);
-//   },
-// };
+const triveni2 = {
+  rivers: ["Ganga", "Yamuna", "Saraswati"],
+  display: function (delay = 1000) {
+    setTimeout(() => {
+      console.log(this.rivers.join(", "));
+    }, delay);
+  },
+};
 
-// triveni.display();
+triveni2.display();
 
-// END: Arrow Functions
+// END: Arrow Functions - A closure
 
 
 
@@ -131,13 +166,13 @@ const { state, country } = myAddress;
 console.log(state, country);
 
 
-function printHouseName1(myAddress) {
+const printHouseName1 = (myAddress) => {
   console.log(`My house name is ${myAddress.houseName}`);
 }
 printHouseName1(myAddress);
 
 // Personally, I don't prefer this
-function printHouseName2({ houseName }) {
+const printHouseName2 = ({ houseName }) => {
   console.log(`My house name is ${houseName}`);
 }
 printHouseName2(myAddress);
@@ -216,7 +251,7 @@ const [ourState, ...others] = southAndNorth;
 console.log(`Our state: ${ourState}`);
 console.log(`Other states: ${others.join(", ")}`);
 
-function southOfKerala(...districts) {
+const southOfKerala = (...districts) => {
   const [southEast, ...rest] = districts;
   console.log(`Southest district of Kerala is ${southEast}.`);
 }
@@ -226,70 +261,70 @@ southOfKerala("Thiruvananthapuram", "Kollam", "Pathanamthitta");
 
 
 
-// // XMLHttpRequest
+// XMLHttpRequest
 
-// function onResponse() {
-//   var data = JSON.parse(this.responseText);
-//   console.log(`Response from XHR call: ${data}`);
-// }
+function onResponse() {
+  var data = JSON.parse(this.responseText);
+  console.log(`Response from XHR call: ${data}`);
+}
 
-// function onError(error) {
-//   console.log(error);
-// }
+function onError(error) {
+  console.log(error);
+}
 
-// var xhrRequest = new XMLHttpRequest();
-// xhrRequest.onload = onResponse;
-// xhrRequest.onerror = onError;
-// xhrRequest.open('get', 'https://randomuser.me/api/', true);
-// xhrRequest.send();
+var xhrRequest = new XMLHttpRequest();
+xhrRequest.onload = onResponse;
+xhrRequest.onerror = onError;
+xhrRequest.open('get', 'https://randomuser.me/api/', true);
+xhrRequest.send();
 
-// // END: XMLHttpRequest
-
-
-
-// // jQuery Ajax
-
-// $.ajax("https://randomuser.me/api/")
-//   .then(function (data) {
-//     console.log(`Response from AJAX call: ${data}`);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
-
-// // END: jQuery Ajax
+// END: XMLHttpRequest
 
 
 
-// // Fetch API
+// jQuery Ajax
 
-// fetch("https://randomuser.me/api/")
-//   .then((response) => {
-//     if (response.status !== 200) {
-//       throw new Error(`Request failed with status - ${response.status}`);
-//     }
+$.ajax("https://randomuser.me/api/")
+  .then(function (data) {
+    console.log(`Response from AJAX call: ${data}`);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
-//     // response is a stream
-//     response.json().then((data) => {
-//       console.log(`Response from Fetch call: ${data}`);
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
-// // END: Fetch API
+// END: jQuery Ajax
 
 
 
-// // Async/Await
+// Fetch API
 
-// async function getRandomUser() {
-//   const response = await fetch("https://randomuser.me/api/");
-//   const user = await response.json();
-//   console.log(`Response from async fn: ${user}`);
-// }
-// getRandomUser();
+fetch("https://randomuser.me/api/")
+  .then((response) => {
+    if (response.status !== 200) {
+      throw new Error(`Request failed with status - ${response.status}`);
+    }
+
+    // response is a stream
+    response.json().then((data) => {
+      console.log(`Response from Fetch call: ${data}`);
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+// END: Fetch API
+
+
+
+// Async/Await
+
+const getRandomUser = async () => {
+  const response = await fetch("https://randomuser.me/api/");
+  const user = await response.json();
+  console.log(`Response from async fn: ${user}`);
+}
+getRandomUser();
 
 // END: Async/Await
 
@@ -348,7 +383,3 @@ import { print, log } from "./modules/logger.js";
 print("We are done for the day!");
 
 // END: ES6 Modules
-
-
-
-
