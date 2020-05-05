@@ -42,7 +42,6 @@ console.log(b2);
 
 
 // The let Keyword - Hoisting
-
 console.log(c1);
 var c1 = 5;
 
@@ -55,6 +54,7 @@ var c1 = 5;
 
 
 // The let Keyword - A step towards closure
+
 var div,
   container = document.getElementById("container");
 
@@ -379,7 +379,27 @@ vaisakh1.greet();
 
 // ES6 Modules
 
-import { print, log } from "./modules/logger.js";
+import { print } from "./modules/logger.js";
 print("We are done for the day!");
 
 // END: ES6 Modules
+
+
+
+// Evaluation Tasks
+
+import {clone, deepClone} from "./modules/deepClone.js";
+let triveni = {
+  name: "Prayagraj Confluence",
+  rivers: ["Ganga", "Yamuna", "Saraswati"]
+};
+
+let deepCopy = deepClone(triveni);
+let shallowCopy = clone(triveni);
+
+deepCopy.rivers.push("Periyar");
+shallowCopy.rivers.push("Nila");
+
+console.log(`Original: ${JSON.stringify(triveni)}`);
+console.log(`Deep Copy: ${JSON.stringify(deepCopy)}`);
+console.log(`Shallow Copy: ${JSON.stringify(shallowCopy)}`);
