@@ -403,3 +403,18 @@ shallowCopy.rivers.push("Nila");
 console.log(`Original: ${JSON.stringify(triveni)}`);
 console.log(`Deep Copy: ${JSON.stringify(deepCopy)}`);
 console.log(`Shallow Copy: ${JSON.stringify(shallowCopy)}`);
+
+
+// Appendix - Clarification on scope of 'this' object in Arrrow function
+
+const triveni3 = {
+  rivers: ["Ganga", "Yamuna", "Saraswati"],
+  display: () => {
+    debugger;
+    // Code inside modules does not have implicit access to the global scope. 
+    // That is, this inside a module is not bound to anything.
+    console.log(this.rivers.join(", "));
+  },
+};
+
+triveni3.display();
