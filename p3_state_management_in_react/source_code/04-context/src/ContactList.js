@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaMinusCircle } from "react-icons/fa";
 import "./ContactList.css";
+import { contactContext } from "./index";
 
-const ContactList = ({ contacts, deleteContact = (f) => f }) => {
+const ContactList = () => {
+  const { contacts } = useContext(contactContext);
+
   return (
     <table className="contacts-table">
       <tbody>
@@ -16,10 +19,7 @@ const ContactList = ({ contacts, deleteContact = (f) => f }) => {
             <td>{contact.name}</td>
             <td>{contact.email}</td>
             <td>
-              <FaMinusCircle
-                className="action-icon"
-                onClick={() => deleteContact(contact.id)}
-              />
+              <FaMinusCircle className="action-icon" />
             </td>
           </tr>
         ))}
