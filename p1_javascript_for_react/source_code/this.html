@@ -10,17 +10,15 @@
   </head>
   <body>
     <script>
-      const triveni3 = {
+      const triveni = {
         rivers: ["Ganga", "Yamuna", "Saraswati"],
         display: () => {
           debugger;
-          // Code inside modules does not have implicit access to the global scope.
-          // That is, this inside a module is not bound to anything.
           console.log(this.rivers.join(", "));
         },
       };
 
-      triveni3.display();
+      triveni.display();
     </script>
   </body>
 </html>

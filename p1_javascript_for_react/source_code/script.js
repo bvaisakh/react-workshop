@@ -412,7 +412,7 @@ const triveni3 = {
   display: () => {
     debugger;
     // Code inside modules does not have implicit access to the global scope. 
-    // That is, this inside a module is not bound to anything.
+    // That is, 'this' inside a module is not bound to anything.
     console.log(this.rivers.join(", "));
   },
 };
