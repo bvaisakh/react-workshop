@@ -4,7 +4,7 @@ import "./ContactList.css";
 import { useContactContext } from "./ContactProvider";
 
 const ContactList = () => {
-  const { contacts } = useContactContext();
+  const { contacts, deleteContact } = useContactContext();
 
   return (
     <table className="contacts-table">
@@ -19,7 +19,10 @@ const ContactList = () => {
             <td>{contact.name}</td>
             <td>{contact.email}</td>
             <td>
-              <FaMinusCircle className="action-icon" />
+              <FaMinusCircle
+                className="action-icon"
+                onClick={() => deleteContact(contact.id)}
+              />
             </td>
           </tr>
         ))}

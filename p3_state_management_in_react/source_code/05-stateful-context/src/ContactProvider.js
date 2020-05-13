@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { v4 as uuid } from "uuid";
 import data from "./data/contacts.json";
 import { useContext } from "react";
 
@@ -6,10 +7,25 @@ const contactContext = createContext();
 export const useContactContext = () => useContext(contactContext);
 
 const ContactProvider = ({ children }) => {
-  const [contacts] = useState(data);
+  const [contacts, setContacts] = useState(data);
+
+  const deleteContact = (contactid) => {
+    const newContacts = contacts.filter((contact) => contact.id !== contactid);
+    setContacts(newContacts);
+  };
+
+  const addContact = (name, email) => {
+    const newContact = {
+      id: uuid(),
+      name,
+      email,
+    };
+    const newContacts = [...contacts, newContact];
+    setContacts(newContacts);
+  };
 
   return (
-    <contactContext.Provider value={{ contacts }}>
+    <contactContext.Provider value={{ contacts, deleteContact, addContact }}>
       {children}
     </contactContext.Provider>
   );
