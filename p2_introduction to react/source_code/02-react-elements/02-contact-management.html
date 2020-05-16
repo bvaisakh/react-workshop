@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <style media="screen">
-      .contacts-table {
-        border-spacing: 5px;
-      }
-    </style>
-    <title>React Elements - Contact Management</title>
-  </head>
-  <body>
-    <!-- Target Container -->
-    <div id="react-container"></div>
+	<head>
+		<meta charset="utf-8" />
+		<style media="screen">
+			.contacts-table {
+				border-spacing: 5px;
+			}
+		</style>
+		<title>React Elements - Contact Management</title>
+	</head>
+	<body>
+		<!-- Target Container -->
+		<div id="react-container"></div>
 
-    <!-- React Library & React DOM-->
-    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		<!-- React Library & React DOM-->
+		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
-    <script>
-      const contactManagement = React.createElement(
-        "section",
-        { id: "contact-list" },
-        React.createElement("h1", null, "Contacts"),
-        React.createElement(
-          "table",
-          { className: "contacts-table" },
-          React.createElement(
-            "tbody",
-            null,
-            React.createElement(
-              "tr",
-              null,
-              React.createElement("th", null, "Name"),
-              React.createElement("th", null, "Email")
-            ),
-            React.createElement(
-              "tr",
-              null,
-              React.createElement("td", null, "Shinto Thomas"),
-              React.createElement("td", null, "sthomas@suyati.com")
-            ),
-            React.createElement(
-              "tr",
-              null,
-              React.createElement("td", null, "Praphul"),
-              React.createElement("td", null, "pnangeelil@suyati.com")
-            ),
-            React.createElement(
-              "tr",
-              null,
-              React.createElement("td", null, "Shamnad V A"),
-              React.createElement("td", null, "sabdul@suyati.com")
-            )
-          )
-        )
-      );
+		<script>
+			const contactManagement = React.createElement(
+				"section",
+				{ id: "contact-list" },
+				React.createElement("h1", null, "Contacts"),
+				React.createElement(
+					"table",
+					{ className: "contacts-table" },
+					React.createElement(
+						"thead",
+						null,
+						React.createElement(
+							"tr",
+							null,
+							React.createElement("th", null, "Name"),
+							React.createElement("th", null, "Email")
+						)
+					),
+					React.createElement(
+						"tbody",
+						null,
+						React.createElement(
+							"tr",
+							null,
+							React.createElement("td", null, "Shinto Thomas"),
+							React.createElement("td", null, "sthomas@suyati.com")
+						),
+						React.createElement(
+							"tr",
+							null,
+							React.createElement("td", null, "Praphul"),
+							React.createElement("td", null, "pnangeelil@suyati.com")
+						),
+						React.createElement(
+							"tr",
+							null,
+							React.createElement("td", null, "Shamnad V A"),
+							React.createElement("td", null, "sabdul@suyati.com")
+						)
+					)
+				)
+			);
 
-      ReactDOM.render(
-        contactManagement,
-        document.getElementById("react-container")
-      );
-    </script>
-  </body>
+			ReactDOM.render(
+				contactManagement,
+				document.getElementById("react-container")
+			);
+		</script>
+	</body>
 </html>
