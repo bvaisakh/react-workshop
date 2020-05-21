@@ -5,6 +5,6 @@
 - Install webpack and webpack-cli dependencies: `npm install --save-dev webpack webpack-cli`
 - Install the necessary Babel dependencies: `npm install --save-dev babel-loader @babel/core`
 - Install the Babel presets: `npm install --save-dev @babel/preset-env @babel/preset-react`
-- Add webpack.config.js and .babelrc
 - Add source files
+- Add webpack.config.js and .babelrc
 - Take the build by running: `npx webpack`
