@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "1c103480-6ada-4545-a7d3-ef2d0fee89d6",
+		"name": "Contact Management API Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Heartbeat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080",
+					"host": [
+						"localhost"
+					],
+					"port": "8080"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"vaisakh\",\r\n    \"mail\": \"vaisakhb12@gmail.com\",\r\n    \"phone\": \"9496336175\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/contact/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contact/842e6d97-6d2f-4c55-9577-94b7c7f7115d",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact",
+						"842e6d97-6d2f-4c55-9577-94b7c7f7115d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vaisakh B\",\r\n    \"mail\": \"vaisakhb12@gmail.com\",\r\n    \"phone\": \"9496336175\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/contact/842e6d97-6d2f-4c55-9577-94b7c7f7115d",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact",
+						"842e6d97-6d2f-4c55-9577-94b7c7f7115d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contact/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
