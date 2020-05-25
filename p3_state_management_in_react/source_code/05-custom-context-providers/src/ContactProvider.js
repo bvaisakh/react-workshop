@@ -3,8 +3,8 @@ import { v4 as uuid } from "uuid";
 import data from "./data/contacts.json";
 import { useContext } from "react";
 
-const contactContext = createContext();
-export const useContactContext = () => useContext(contactContext);
+const ContactContext = createContext();
+export const useContactContext = () => useContext(ContactContext);
 
 const ContactProvider = ({ children }) => {
   const [contacts, setContacts] = useState(data);
@@ -25,9 +25,9 @@ const ContactProvider = ({ children }) => {
   };
 
   return (
-    <contactContext.Provider value={{ contacts, deleteContact, addContact }}>
+    <ContactContext.Provider value={{ contacts, deleteContact, addContact }}>
       {children}
-    </contactContext.Provider>
+    </ContactContext.Provider>
   );
 };
 

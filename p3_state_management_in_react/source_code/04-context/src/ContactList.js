@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { FaMinusCircle } from "react-icons/fa";
 import "./ContactList.css";
-import { contactContext } from "./App";
+import { ContactContext } from "./App";
 
 const ContactList = () => {
-	const { contacts, deleteContact } = useContext(contactContext);
+	const { contacts, deleteContact } = useContext(ContactContext);
 
 	return (
 		<table className="contacts-table">

@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import data from "./data/contacts.json";
 import ContactList from "./ContactList.js";
 
-export const contactContext = createContext();
+export const ContactContext = createContext();
 
 function App() {
   const [contacts, setContacts] = useState(data);
@@ -13,12 +13,12 @@ function App() {
 	};
 
 	return (
-		<contactContext.Provider value={{ contacts, deleteContact }}>
+		<ContactContext.Provider value={{ contacts, deleteContact }}>
 			<section id="contact-list">
 				<h1>Contact Management</h1>
 				<ContactList></ContactList>
 			</section>
-		</contactContext.Provider>
+		</ContactContext.Provider>
 	);
 }
 
