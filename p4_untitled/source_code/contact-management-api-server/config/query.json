@@ -1,0 +1,10 @@
+{
+  "contact": {
+    "createTable": "CREATE TABLE contact (id, name, mail, phone)",
+    "selectAll": "SELECT * FROM contact",
+    "selectOne": "SELECT * FROM contact WHERE id = ?",
+    "insert": "INSERT INTO contact(id, name, mail, phone) VALUES(?, ?, ?, ?)",
+    "update": "UPDATE contact SET id = ?, name = ?, mail = ?, phone = ? WHERE id = ?",
+    "deleteQuery": "DELETE FROM contact WHERE id = ?"
+  }
+}

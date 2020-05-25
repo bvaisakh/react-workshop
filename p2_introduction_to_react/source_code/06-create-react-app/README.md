@@ -1,2 +1,2 @@
 ### Instructions
-- Create a react app: `npx create-react-app my-app`
+- Create a react app: `npx create-react-app <app-name>`
