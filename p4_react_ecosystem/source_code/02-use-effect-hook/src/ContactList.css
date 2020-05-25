@@ -1,0 +1,19 @@
+.contact-list {
+  border-spacing: 5px;
+}
+
+.action-icon {
+  display: block;
+  margin: auto;
+  cursor: pointer;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+td {
+  padding: 0 5px;
+}
