@@ -2,7 +2,8 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const debug = require('debug')('app');
+var cors = require('cors');
+const debug = require('debug')('contact-management-app');
 
 const indexRouter = require('./controllers/indexController');
 const contactRouter = require('./controllers/contactController');
@@ -11,6 +12,7 @@ const morganLogFormat = process.env.MORGAN_LOG_FORMAT;
 
 const app = express();
 
+app.use(cors())
 app.use(logger(morganLogFormat));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

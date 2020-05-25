@@ -27,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"vaisakh\",\r\n    \"mail\": \"vaisakhb12@gmail.com\",\r\n    \"phone\": \"9496336175\"\r\n}",
+					"raw": "{\r\n    \"name\": \"vaisakh\",\r\n    \"email\": \"vaisakhb12@gmail.com\",\r\n    \"phone\": \"9496336175\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -49,7 +49,7 @@
 			"response": []
 		},
 		{
-			"name": "Get One",
+			"name": "Get",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -74,7 +74,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Vaisakh B\",\r\n    \"mail\": \"vaisakhb12@gmail.com\",\r\n    \"phone\": \"9496336175\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Vaisakh B\",\r\n    \"email\": \"vaisakhb12@gmail.com\",\r\n    \"phone\": \"9496336175\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -109,6 +109,25 @@
 					"path": [
 						"contact",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contact/7763ae48-8278-4a7a-8f80-f736a68b3de5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contact",
+						"7763ae48-8278-4a7a-8f80-f736a68b3de5"
 					]
 				}
 			},

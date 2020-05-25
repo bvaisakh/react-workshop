@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const debug = require('debug')('app');
+const debug = require('debug')('contact-management-app');
 const Promise = require('bluebird');
 
 let db;
@@ -56,6 +56,8 @@ const executeQuery = (query, data, isGetAll) => {
   });
 };
 
+
+// Method to run query with arguments
 const executeUpdate = (query, data) => {
   debug(query);
   debug(data);

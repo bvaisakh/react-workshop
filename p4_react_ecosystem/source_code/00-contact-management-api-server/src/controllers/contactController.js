@@ -1,5 +1,5 @@
 const express = require('express');
-const debug = require('debug')('app');
+const debug = require('debug')('contact-management-app');
 const createError = require('http-errors');
 const { v4: uuid } = require('uuid');
 const db = require('../db');
@@ -18,7 +18,7 @@ const getUser = async (id) => {
 
 const createUserHandler = (req, res, next) => {
   const id = uuid();
-  const data = [id, req.body.name, req.body.mail, req.body.phone];
+  const data = [id, req.body.name, req.body.email, req.body.phone];
 
   db.executeUpdate(queries.contact.insert, data)
     .then(async () => {
@@ -53,7 +53,7 @@ const getUserHandler = async (req, res, next) => {
 
 const updateUserHandler = (req, res, next) => {
   const id = req.params.id;
-  const params = [id, req.body.name, req.body.mail, req.body.phone, id];
+  const params = [id, req.body.name, req.body.email, req.body.phone, id];
 
   db.executeUpdate(queries.contact.update, params)
     .then(async () => {
@@ -65,9 +65,23 @@ const updateUserHandler = (req, res, next) => {
     });
 };
 
+const deleteUserHandler = (req, res, next) => {
+  const id = req.params.id;
+
+  db.executeUpdate(queries.contact.delete, [id])
+    .then(() => {
+      return res.send(id);
+    })
+    .catch((error) => {
+      console.log(error);
+      return errorHandler(error, next);
+    });
+};
+
 router.post('/', createUserHandler);
 router.get('/', getAllUserHandler);
 router.get('/:id', getUserHandler);
 router.put('/:id', updateUserHandler);
+router.delete('/:id', deleteUserHandler);
 
 module.exports = router;

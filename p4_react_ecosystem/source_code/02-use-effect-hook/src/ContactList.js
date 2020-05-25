@@ -7,10 +7,13 @@ const ContactList = () => {
 	const { contacts, deleteContact } = useContactContext();
 
 	return (
+		<>
+		<h1>Contact List</h1>
 		<table className="contacts-table">
 			<thead>
 				<tr>
 					<th>Name</th>
+					<th>Phone</th>
 					<th>Email</th>
 					<th>Actions</th>
 				</tr>
@@ -19,6 +22,7 @@ const ContactList = () => {
 				{contacts.map((contact) => (
 					<tr key={contact.id}>
 						<td>{contact.name}</td>
+						<td>{contact.phone}</td>
 						<td>{contact.email}</td>
 						<td>
 							<FaMinusCircle
@@ -30,6 +34,7 @@ const ContactList = () => {
 				))}
 			</tbody>
 		</table>
+		</>
 	);
 };
 

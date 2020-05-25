@@ -1,38 +1,60 @@
 import React, { createContext, useState, useEffect } from "react";
-import { v4 as uuid } from "uuid";
-import data from "./data/contacts.json";
+import axios from "axios";
 import { useContext } from "react";
+
+const baseApiUrl = "http://localhost:8080";
 
 const ContactContext = createContext();
 export const useContactContext = () => useContext(ContactContext);
 
 const ContactProvider = ({ children }) => {
-  const [contacts, setContacts] = useState([]);
+	const [contacts, setContacts] = useState([]);
 
-  useEffect(() => {
-    setContacts(data);
-  }, []);
+	useEffect(() => {
+		axios.get(`${baseApiUrl}/contact/`).then((res) => {
+			setContacts(res.data);
+		});
+	}, []);
 
-  const deleteContact = (contactid) => {
-    const newContacts = contacts.filter((contact) => contact.id !== contactid);
-    setContacts(newContacts);
-  };
+	const deleteContact = (contactid) => {
+		axios.delete(`${baseApiUrl}/contact/${contactid}`).then(() => {
+			axios
+				.get(`${baseApiUrl}/contact/`)
+				.then((res) => {
+					setContacts(res.data);
+				})
+				.catch((error) => {
+					console.error(error);
+					alert("Something went wrong!");
+				});
+		});
+	};
 
-  const addContact = (name, email) => {
-    const newContact = {
-      id: uuid(),
-      name,
-      email,
-    };
-    const newContacts = [...contacts, newContact];
-    setContacts(newContacts);
-  };
+	const addContact = (name, phone, email) => {
+		const contact = {
+			name,
+			email,
+			phone,
+		};
 
-  return (
-    <ContactContext.Provider value={{ contacts, deleteContact, addContact }}>
-      {children}
-    </ContactContext.Provider>
-  );
+		axios
+			.post(`${baseApiUrl}/contact/`, contact)
+			.then((res) => {
+				const newContact = res.data;
+				const newContacts = [...contacts, newContact];
+				setContacts(newContacts);
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("Something went wrong!");
+			});
+	};
+
+	return (
+		<ContactContext.Provider value={{ contacts, deleteContact, addContact }}>
+			{children}
+		</ContactContext.Provider>
+	);
 };
 
 export default ContactProvider;

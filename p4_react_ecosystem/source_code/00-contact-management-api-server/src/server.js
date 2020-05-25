@@ -1,7 +1,7 @@
 const db = require('./db');
-const app = require('./express');
+const app = require('./app');
 const http = require('http');
-const debug = require('debug')('app');
+const debug = require('debug')('contact-management-app');
 
 const queries = require('./../config/query.json');
 
