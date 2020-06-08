@@ -1,0 +1,1 @@
+Example demonstrating event handling in React.
